@@ -83,15 +83,17 @@ function loose() {
 
 function next() {
     answerNumber  = Math.floor((minValue + maxValue) / 2);
+
+    const answerNumberText = getAnswerNumberText(answerNumber);
     orderNumber++;
     orderNumberField.innerText = orderNumber;
     answerField.innerText = getRandomText([
-        `Вы загадали число ${answerNumber }?`,
-        `Да это легко! Ты загадал ${answerNumber }?`,
-        `Наверное, это число ${answerNumber }?`,
-        `Скорее всего это число ${answerNumber }?`,
-        `Уверен, это число ${answerNumber }?`,
-        `Может быть это число ${answerNumber }?`
+        `Вы загадали число ${answerNumberText }?`,
+        `Да это легко! Ты загадал ${answerNumberText }?`,
+        `Наверное, это число ${answerNumberText }?`,
+        `Скорее всего это число ${answerNumberText }?`,
+        `Уверен, это число ${answerNumberText }?`,
+        `Может быть это число ${answerNumberText }?`
     ]);
 
 }
@@ -99,4 +101,12 @@ function next() {
 function readNumber(title, defaultValue) {
     const result = parseInt(prompt(title, defaultValue));
     return isNaN(result) ? defaultValue : result;
+}
+
+function getAnswerNumberText(number) {
+    const text = "Триста восемьдесят шесть";
+    //todo: преобразовать number  в число прописью и записать в текст
+
+    return (text.length > 20) ? number : text;
+
 }
