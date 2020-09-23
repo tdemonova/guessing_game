@@ -32,8 +32,6 @@ document.getElementById('btnLess').addEventListener('click', function () {
     }
 })
 
-
-
 document.getElementById('btnEqual').addEventListener('click', function () {
     if (gameRun){
         answerField.innerText = getRandomText([
@@ -50,8 +48,16 @@ document.getElementById('btnEqual').addEventListener('click', function () {
 document.getElementById('btnRetry').addEventListener('click', newGame)
 
 function newGame(){
-    minValue = parseInt(prompt('Минимальное знание числа для игры','0'));
-    maxValue = parseInt(prompt('Максимальное знание числа для игры','100'));
+    minValue = readNumber('Минимальное знание числа для игры','0');
+    if (minValue < -999) {
+        minValue = -999
+    }
+    maxValue = readNumber('Максимальное знание числа для игры','100');
+    if (maxValue > 999) {
+        maxValue = 999
+    }
+
+
     alert(`Загадайте любое целое число от ${minValue} до ${maxValue}, а я его угадаю`);
     answerNumber  = Math.floor((minValue + maxValue) / 2);
     orderNumber = 1;
@@ -88,4 +94,9 @@ function next() {
         `Может быть это число ${answerNumber }?`
     ]);
 
+}
+
+function readNumber(title, defaultValue) {
+    const result = parseInt(prompt(title, defaultValue));
+    return isNaN(result) ? defaultValue : result;
 }
