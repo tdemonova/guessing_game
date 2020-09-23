@@ -2,3 +2,27 @@
     height: 100vh;
     font-family: 'Open Sans', monospace;
 }
+
+body {
+    background-color: darkslategray;
+}
+
+.card-header {
+    background-color: fuchsia;
+    font-weight: bold;
+
+}
+
+.card-body {
+    background-color: plum;
+}
+
+.card-footer {
+    background-color: purple;
+    
+}
+
+.btn-link {
+    color: black;
+    font-weight: bold;
+}
